@@ -8,9 +8,9 @@ import java.util.Date;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+//
 
 public class Test01Controller extends HttpServlet {
-	
 	
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -28,8 +28,7 @@ public class Test01Controller extends HttpServlet {
 		String dateString = formatter.format(date);
 		
 		out.println("오늘의 날짜는 " + dateString);
-	
-		
+
 		
 	}
 
