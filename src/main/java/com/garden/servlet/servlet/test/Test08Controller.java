@@ -19,9 +19,10 @@ public class Test08Controller extends HttpServlet {
 		
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("text/html");
+		
 		PrintWriter out = response.getWriter();
 		
-		String search = request.getParameter("search");
+		String keyword = request.getParameter("keyword");
 		
 		List<String> list = new ArrayList<>(Arrays.asList(
 		        "강남역 최고 맛집 소개 합니다.", 
@@ -32,10 +33,19 @@ public class Test08Controller extends HttpServlet {
 		
 		
 		out.println("<html><head><title>주문하기</title></head><body>");
-		
-		for(int i = 0; i < list.size(); i++) {
-			if(list.get(i).contains(search)) {
-				out.println("<div>" + list.get(i).replaceAll(search, "<b>" + search + "</b>") + "</div><hr>");
+
+//		for(int i = 0; i < list.size(); i++) {
+//		if(list.get(i).contains(keyword)) {
+//			out.println("<div>" + list.get(i).replaceAll(keyword, "<b>" + keyword + "</b>") + "</div><hr>");
+//		}
+//	}
+		for(String text:list) {
+			if(text.contains(keyword)) {
+				// "강남역" 최고 맛집 소개합니다."
+				// "강남역 최고 <b>맛집</b> 소개합니다."
+				// 맛집 -> <b>맛집</b>
+				String newText = text.replaceAll(keyword, "<b>"+ keyword + "</b>");
+				out.println("<div>" + newText + "</div> <hr>");
 			}
 		}
 		
