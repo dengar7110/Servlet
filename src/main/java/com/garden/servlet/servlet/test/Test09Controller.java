@@ -3,7 +3,6 @@ package com.garden.servlet.servlet.test;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -24,7 +23,7 @@ public class Test09Controller extends HttpServlet {
 		out.println("<html><head><title>입사지원</title></head><body>");
 		
 		out.println("<h2>" + name + "님 지원이 완료되었습니다.</h2><hr>");
-		out.println("<div>지원내용 <br>" + introduce + "</div>");
+		out.println("<div>지원내용</div><div>" + introduce + "</div>");
 		
 		out.println("</body></html>");
 		
