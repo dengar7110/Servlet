@@ -8,20 +8,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/servlet/ex04")
-public class Ex04Controller extends HttpServlet {
-
+@WebServlet("/servlet/ex05")
+public class Ex05Controller extends HttpServlet {
+	
 	@Override
-	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-
-		response.setCharacterEncoding("utf-8");
+	public void doPost (HttpServletRequest request, HttpServletResponse response) throws IOException {
+		
 		response.setContentType("text/html");
 		
 		PrintWriter out = response.getWriter();
 		
 		String name = request.getParameter("name");
 		String birthday = request.getParameter("birthday");
-		
 		int year = Integer.parseInt(birthday.substring(0, 4));
 		
 		int age = 2024 - year + 1;
@@ -31,8 +29,6 @@ public class Ex04Controller extends HttpServlet {
 		out.println("<h2>나이 : " +  age + "</h2>");
 		out.println("</body></html>");
 		
-		
-		
-		
 	}
-};
+
+}
