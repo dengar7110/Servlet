@@ -40,7 +40,7 @@ public class Test10Controller extends HttpServlet {
 		}else if (!password.equals(userMap.get("password"))){
 			out.println("<h3>password가 일치하지 않습니다.</h3>");
 		}else {
-			out.println("<h3>" + name + "님 환영합니다.</h3>");
+			out.println("<h3>" + name + "님 환영합니다." + password + "</h3>");
 		}
 		
 		out.println("</body></html>");
