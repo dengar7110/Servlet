@@ -30,5 +30,4 @@ public class Ex05Controller extends HttpServlet {
 		out.println("</body></html>");
 		
 	}
-
 }
