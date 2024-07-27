@@ -44,9 +44,9 @@
 			<tbody>
 				<% for(Map<String, Object> store:list){ 
 					if(menu.equals(store.get("menu"))){
-						
-					}
-					
+						// option : null 이 아니면 sotre point 값이 4 이상 option이 null 이면	
+						double point = (Double)store.get("point");
+						if(option == null || point > 4) {
 				%>
 				<tr>
 					<td><%= store.get("menu") %></td>
@@ -54,7 +54,9 @@
 					<td><%= store.get("point") %></td>
 				</tr>
  
-				<% } %>
+				<%			}
+						}
+					}	%>
 			
 			</tbody>
 		</table>

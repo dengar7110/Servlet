@@ -9,9 +9,8 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 </head>
 <body>
-
-		<%
-		List<Map<String, Object>> list = new ArrayList<>();
+	<%
+	    List<Map<String, Object>> list = new ArrayList<>();
 	    Map<String, Object> map = new HashMap<String, Object>() {
 	        { 
 	            put("id", 1000);
@@ -54,30 +53,38 @@
 	            put("image", "http://image.kyobobook.co.kr/images/book/xlarge/194/x9788972756194.jpg");
 	        } 
 	    };
-	    list.add(map);
+	    list.add(map);	
+		
+	    // 하나의 책을 지정할 수 있는 데이터를 파라미터로 전달 받고,
+	    // 이 값으로 하나의 책만 표시하는 조건을 만들어서 활용한다.
+		
+		String title = request.getParameter("title");
 	
-	    // 하나의 책을 지칭할 수 있는 데이터를 파라미터로 전달 받고, 
-	    // 이 값으로 하나의 책만 표시하는 조건을 만들어서 활용한다. 
-	    
 	%>
-
+	
 	<div class="container">
 	
-		<% for(Map<String, Object> book:list) { %>
 		<div class="d-flex">
+			<% for(Map<String, Object> book:list) { 
+				if(title.equals(book.get("title"))){
+					
+			%>
+		
 			<div>
-				<img src="<%= book.get("image") %>">
+				<img src="<%= book.get("image")%>">
 			</div>
 			<div class="ml-4">
 				<div class="display-1 font-weight-bold"><%= book.get("title") %></div>
 				<div class="display-2 text-info"><%= book.get("author") %></div>
 				<div class="display-4"><%= book.get("publisher") %></div>
 			</div>
-		
+			<%	}
+				
+			} %>
 		</div>
-		<% } %>
 	
 	</div>
+
 
 	<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>

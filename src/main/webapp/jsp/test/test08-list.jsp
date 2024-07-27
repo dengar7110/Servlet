@@ -9,9 +9,8 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 </head>
 <body>
-
 	<%
-		List<Map<String, Object>> list = new ArrayList<>();
+	    List<Map<String, Object>> list = new ArrayList<>();
 	    Map<String, Object> map = new HashMap<String, Object>() {
 	        { 
 	            put("id", 1000);
@@ -55,10 +54,10 @@
 	        } 
 	    };
 	    list.add(map);
-	
 	%>
-
+	
 	<div class="container">
+	
 		<table class="table text-center">
 			<thead>
 				<tr>
@@ -67,27 +66,23 @@
 					<td>제목</td>
 				</tr>
 			</thead>
-			
 			<tbody>
-				<% for(Map<String, Object> book:list) { %>
+			
+			<%	for(Map<String, Object> book:list) { %>
+			
 				<tr>
 					<td><%= book.get("id") %></td>
-					<td>
-						<img width="120" src="<%= book.get("image") %>">
-					</td>
-					<td>
-						<a href="#" class="display-4"><%= book.get("title") %></a>
-					</td>
+					<td><img width="120" src="<%= book.get("image") %>"></img></td>
+					<td><a href="/jsp/test/test08-detail.jsp?title=<%= book.get("title")%>"><%= book.get("title") %></a></td>
 				</tr>
-				<% } %>
 				
-			
+			<%} %>
 			</tbody>
-		
-		</table>
-	
-	
+		</table>	
+
 	</div>
+
+
 
 	<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
