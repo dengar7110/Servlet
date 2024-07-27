@@ -22,22 +22,27 @@
 	%>
 	
 	<div class="container">
-		<h2>장 목록</h2>
-		
-		<hr>
-		<div class="d-flex jusify-contents-spacearound">
-			<div>번호</div>
-			<div>품목</div>
-		</div>
-		<% for(int i = 0; i< goodsList.size(); i++){ 
-			int index = i+1;
-		%>
-				
-		<div class="d-flex">
-			<div><%= index %></div> 
-			<div><%= goodsList.get(i) %></div>
-		</div>
-		<%} %>
+		<h2 class="text-center">장 목록</h2>
+		<table class="table text-center">
+			<thead>
+				<tr>
+					<td>번호</td>
+					<td>품목</td>
+				</tr>
+			</thead>
+			<tbody>
+			
+				<% for(int i = 0; i < goodsList.size(); i++){ 
+					int index = i + 1;
+				%>
+					
+				<tr>
+					<td><%= index %></td> 
+					<td><%= goodsList.get(i) %></td>
+				</tr>
+				<%} %>
+			</tbody>
+		</table>
 
 	</div>
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

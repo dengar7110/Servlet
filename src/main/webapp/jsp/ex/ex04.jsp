@@ -67,7 +67,7 @@
 				<td><%= scoreMap.get("수학") %></td>
 				<td><%= scoreMap.get("영어") %></td>
 			</tr>
-			<%} %>
+			<% } %>
 
 		</tbody>
 	</table>
