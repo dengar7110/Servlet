@@ -79,15 +79,7 @@
 				</thead>
 				<tbody>
 				<% for(Map<String, String> channel:list) { 
-					if(targetCategory == null) {
-				%>
-					<tr>
-						<td><%= channel.get("ch") %></td>
-						<td><%= channel.get("name") %></td>
-						<td><%= channel.get("category") %></td>
-					</tr>
-					
-				<%}else if (targetCategory.equals(channel.get("category"))){ %>
+					if (targetCategory == null || targetCategory.equals(channel.get("category"))){ %>
 					<tr>
 						<td><%= channel.get("ch") %></td>
 						<td><%= channel.get("name") %></td>
@@ -103,7 +95,7 @@
 		
 		<footer>
 			<div class="text-center">
-				Copyright 2024. skb All Rights Reserved.
+				Copyright 2024. marondal All Rights Reserved.
 			</div>
 		</footer>
 		
