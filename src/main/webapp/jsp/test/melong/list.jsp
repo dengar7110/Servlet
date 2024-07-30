@@ -5,7 +5,7 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>test10-list</title>
+<title>Melong - 리스트</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 <link rel="stylesheet" href="style.css">
 </head>
@@ -90,72 +90,70 @@
 	    musicList.add(musicInfo);
 	    
 	    
-	    String search = request.getParameter("search");
-	    
 	%>
 
 	<div id="wrap">
 		
-		<header class="d-flex align-items-end">
-			<h1 class="text-success mr-5">Melong</h1>
-			
-			<form method="post" action="/jsp/test/melong/list.jsp">
-				<div class="input-group">
-					<input type="text" class="form-control col-5" name="search">
-					<div class="input-group-append">
-						<button type="submit" class="btn btn-primary append">검색</button>
+		<header class="d-flex">
+			<div class="logo d-flex align-items-center">
+				<h1 class="text-success mr-5">Melong</h1>
+			</div>
+			<div class="search d-flex align-items-center">
+					<div class="input-group">
+						<input type="text" class="form-control col-5" name="search">
+						<div class="input-group-append">
+							<button type="submit" class="btn btn-primary">검색</button>
+						</div>
 					</div>
-				</div>
-			</form>
+			</div>
 		</header>
 		
 		<nav class="main-menu">
-			<ul class="nav nav-pill">
-				<li class="nav-item"><a href="#" class="nav-link">멜롱차트</a></li>
-				<li class="nav-item"><a href="#" class="nav-link">최신음악</a></li>
-				<li class="nav-item"><a href="#" class="nav-link">장르음악</a></li>
-				<li class="nav-item"><a href="#" class="nav-link">멜롱DJ</a></li>
-				<li class="nav-item"><a href="#" class="nav-link">뮤직어워드</a></li>
+			<ul class="nav font-weight-bold">
+				<li class="nav-item"><a href="#" class="nav-link text-dark">멜롱차트</a></li>
+				<li class="nav-item"><a href="#" class="nav-link text-dark">최신음악</a></li>
+				<li class="nav-item"><a href="#" class="nav-link text-dark">장르음악</a></li>
+				<li class="nav-item"><a href="#" class="nav-link text-dark">멜롱DJ</a></li>
+				<li class="nav-item"><a href="#" class="nav-link text-dark">뮤직어워드</a></li>
 			</ul>
 		</nav>
 		
 		<section class="contents">
-			<div class="d-flex border-success mb-5">
-				<div class="ml-5">
-					<img width="140" alt="아이유" src="<%= artistInfo.get("photo")%>">
+			<div class="artist d-flex border border-success p-3">
+				<div>
+					<img width="150" alt="아이유" src="<%= artistInfo.get("photo")%>">
 				</div>
-				<div class="ml-4">
-					<h2><%= artistInfo.get("name") %></h2>
+				<div class="ml-3">
+					<h3><%= artistInfo.get("name") %></h3>
 					<div><%= artistInfo.get("agency") %></div>
 					<div><%= artistInfo.get("debute") %> 데뷔</div>
 				</div>
 			</div>
-			
-			<table class="table text-center">
-			
-				<thead>
-					<tr>
-						<th>no</th>
-						<th>제목</th>
-						<th>앨범</th>
-					</tr>
-				</thead>
-				<tbody>
+			<div class="song-list mt-4">
+				<h3>곡 목록</h3>
+				<table class="table table-sm text-center">
+					<thead>
+						<tr>
+							<th>no</th>
+							<th>제목</th>
+							<th>앨범</th>
+						</tr>
+					</thead>
+					
+					<tbody>
+					
+					<% for(Map<String, Object> music:musicList) { 	%>
+						<tr>
+							<td><%= music.get("id") %></td>
+							<td><a href="/jsp/test/melong/detail.jsp?id=<%= music.get("id") %>"><%= music.get("title") %></a></td>
+							<td><%= music.get("album") %></td>
+						</tr>
+					<%	}	%>
+					
+					</tbody>
 				
-				<% for( Map<String, Object> music:musicList) { 
-					if(search == null || search.equals(music.get("title")))
-				%>
-				
-					<tr>
-						<td><%= music.get("id") %></td>
-						<td><a href="/jsp/test/melong/detail.jsp?id=<%= music.get("id") %>"><%= music.get("title") %></a></td>
-						<td><%= music.get("album") %></td>
-					</tr>
-				</tbody>
-				<% } %>
-			
-			</table>
-			
+				</table>
+			</div>
 		</section>
 		
 		<footer>
