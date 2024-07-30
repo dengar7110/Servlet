@@ -79,10 +79,23 @@
 	    musicInfo.put("composer", "아이유,이종훈,이채규");
 	    musicInfo.put("lyricist", "아이유");
 	    musicList.add(musicInfo);
+	   
 	    
-	    int targetId = Integer.parseInt(request.getParameter("id"));
+	    String title = "null";
 	    
-	    String title = request.getParameter("title");
+	    if(title != null){
+		    title = request.getParameter("title");
+	    }
+	    
+	    int targetId = 0;
+	    
+	    String idStr = request.getParameter("id");
+	    
+	    if(idStr != null){
+	    	targetId = Integer.parseInt(request.getParameter("id"));
+	    }
+	    
+	    
 	    
 	%>
 
@@ -95,7 +108,7 @@
 				</div>
 					<div class="search d-flex align-items-center">
 							<div class="input-group">
-								<input type="text" class="form-control col-5" name="search">
+								<input type="text" class="form-control col-5" name="title">
 								<div class="input-group-append">
 									<button type="submit" class="btn btn-primary">검색</button>
 								</div>
@@ -119,7 +132,7 @@
 			
 			<% for(Map<String, Object> music:musicList) { 
 				int id = (Integer)music.get("id");
-				if(title == null && targetId == id) {
+				if((title != null && title.equals(music.get("title"))) || targetId == id) {
 			%>
 			
 			<div class="artist d-flex border border-success p-3">
@@ -137,11 +150,10 @@
 					</div>
 				</div>
 			</div>
-		
-		<%	}else if(targetId == null || title.equals(music.get("title"))){
-			
-			}
-		} %>
+
+			<%	 } 
+			}%>
+
 		
 		<div class="song-list mt-4">
 			<h3>가사</h3>
