@@ -73,7 +73,7 @@
 				<tr>
 					<td><%= book.get("id") %></td>
 					<td><img width="120" src="<%= book.get("image") %>"></img></td>
-					<td><a href="/jsp/test/test08-detail.jsp?title=<%= book.get("title")%>"><%= book.get("title") %></a></td>
+					<td><a href="/jsp/test/test08-detail.jsp?id=<%= book.get("id")%>"><%= book.get("title") %></a></td>
 				</tr>
 				
 			<%} %>

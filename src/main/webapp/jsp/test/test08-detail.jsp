@@ -58,18 +58,18 @@
 	    // 하나의 책을 지정할 수 있는 데이터를 파라미터로 전달 받고,
 	    // 이 값으로 하나의 책만 표시하는 조건을 만들어서 활용한다.
 		
-		String title = request.getParameter("title");
+		int targetId = Integer.parseInt(request.getParameter("id"));
 	
 	%>
 	
 	<div class="container">
 	
-		<div class="d-flex">
-			<% for(Map<String, Object> book:list) { 
-				if(title.equals(book.get("title"))){
-					
+		<% for(Map<String, Object> book:list) { 
+			int id = (Integer)book.get("id");
+			if(targetId == id) {
 			%>
 		
+		<div class="d-flex">
 			<div>
 				<img src="<%= book.get("image")%>">
 			</div>
@@ -78,10 +78,10 @@
 				<div class="display-2 text-info"><%= book.get("author") %></div>
 				<div class="display-4"><%= book.get("publisher") %></div>
 			</div>
-			<%	}
-				
-			} %>
 		</div>
+		<%	}
+			
+		} %>
 	
 	</div>
 
