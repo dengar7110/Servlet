@@ -89,26 +89,25 @@
 	    musicInfo.put("lyricist", "아이유");
 	    musicList.add(musicInfo);
 	    
-	    
 	%>
 
 	<div id="wrap">
 		
-		<form method="get" action="/jsp/test/melong/detail.jsp">
 			<header class="d-flex">
 				<div class="logo d-flex align-items-center">
 					<h1 class="text-success mr-5">Melong</h1>
 				</div>
-					<div class="search d-flex align-items-center">
-							<div class="input-group">
-								<input type="text" class="form-control col-5" name="title">
-								<div class="input-group-append">
-									<button type="submit" class="btn btn-primary">검색</button>
-								</div>
+				<div class="search d-flex align-items-center">
+					<form method="get" action="/jsp/test/melong/detail.jsp" class="col-10">
+						<div class="input-group">
+							<input type="text" class="form-control" name="title">
+							<div class="input-group-append">
+								<button type="submit" class="btn btn-success">검색</button>
 							</div>
-					</div>
+						</div>
+					</form>
+				</div>
 			</header>
-		</form>
 		
 		<nav class="main-menu">
 			<ul class="nav font-weight-bold">

@@ -83,39 +83,40 @@
 	    
 	    String title = "null";
 	    
-	    if(title != null){
-		    title = request.getParameter("title");
-	    }
-	    
+		if(title != null){
+			title = request.getParameter("title");
+		}
+		
 	    int targetId = 0;
 	    
-	    String idStr = request.getParameter("id");
+	    String idString = request.getParameter("id");
 	    
-	    if(idStr != null){
-	    	targetId = Integer.parseInt(request.getParameter("id"));
+	    if(idString != null){
+	    	targetId = Integer.parseInt(idString);
 	    }
+	    
 	    
 	    
 	    
 	%>
 
 	<div id="wrap">
-	
-		<form method="get" action="/jsp/test/melong/detail.jsp">
-			<header class="d-flex">
-				<div class="logo d-flex align-items-center">
-					<h1 class="text-success mr-5">Melong</h1>
-				</div>
-					<div class="search d-flex align-items-center">
-							<div class="input-group">
-								<input type="text" class="form-control col-5" name="title">
-								<div class="input-group-append">
-									<button type="submit" class="btn btn-primary">검색</button>
-								</div>
-							</div>
+
+		<header class="d-flex">
+			<div class="logo d-flex align-items-center">
+				<h1 class="text-success mr-5">Melong</h1>
+			</div>
+			<div class="search d-flex align-items-center">
+				<form method="get" action="/jsp/test/melong/detail.jsp" class="col-10">
+					<div class="input-group">
+						<input type="text" class="form-control" name="title">
+						<div class="input-group-append">
+							<button type="submit" class="btn btn-success">검색</button>
+						</div>
 					</div>
-			</header>
-		</form>
+				</form>
+			</div>
+		</header>
 
 		<nav class="main-menu">
 			<ul class="nav font-weight-bold">
@@ -132,7 +133,11 @@
 			
 			<% for(Map<String, Object> music:musicList) { 
 				int id = (Integer)music.get("id");
-				if((title != null && title.equals(music.get("title"))) || targetId == id) {
+				
+				// id 가 전달되면 id가 일치하는 경우
+				//title이 전달이 되면 title이 일치하는 경우
+				if((targetId != 0 && targetId == id) || (title != null && title.equals(music.get("title")))) {
+				
 			%>
 			
 			<div class="artist d-flex border border-success p-3">
@@ -151,16 +156,14 @@
 				</div>
 			</div>
 
-			<%	 } 
+			<%	 }
 			}%>
-
 		
-		<div class="song-list mt-4">
-			<h3>가사</h3>
-			<hr>
-			<h5>가사 정보 없음</h5>
-		</div>
-
+			<div class="song-list mt-4">
+				<h3>가사</h3>
+				<hr>
+				<div>가사 정보 없음</div>
+			</div>
 		</section>
 		
 		<footer>
