@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 </head>
 <body>
+
 	<%
 		MysqlService mysqlService = MysqlService.getInstance();
 		mysqlService.connect();
@@ -17,7 +18,6 @@
 		List <Map<String,Object>> resultList = mysqlService.select("SELECT * FROM `favorites`;");
 	
 	%>
-
 
 	<table class="table">
 		<thead>
@@ -27,13 +27,14 @@
 				<th>삭제링크</th>
 			</tr>
 		</thead>
+		
 		<tbody>
 		
-		<% for(Map<String, Object> resultMap:resultList) {%>
+		<% for(Map<String, Object> resultMap:resultList) { %>
 			<tr>
 				<td><%= resultMap.get("name") %></td>
 				<td><a href="<%= resultMap.get("url") %>"><%= resultMap.get("url") %></a></td>
-				<td><a href="/db/test/test02">삭제</a></td>
+				<td><a href="/db/test/delete">삭제</a></td>
 			</tr>
 		<% } %>
 			
