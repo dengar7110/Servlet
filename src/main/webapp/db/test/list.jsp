@@ -16,10 +16,10 @@
 		mysqlService.connect();
 		
 		List <Map<String,Object>> resultList = mysqlService.select("SELECT * FROM `favorites`;");
-	
 	%>
 
 	<table class="table">
+	
 		<thead>
 			<tr>
 				<th>사이트</th>
