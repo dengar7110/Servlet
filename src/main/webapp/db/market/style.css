@@ -1,0 +1,13 @@
+@charset "UTF-8";
+
+#wrap {
+    width: 800px;
+    height: 800px;
+    margin: 0 auto;
+}
+.header-nav {
+	background-color: rgb(255, 127, 80);
+}
+footer {
+	height : 50px;
+}
