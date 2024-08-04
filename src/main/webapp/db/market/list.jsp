@@ -16,9 +16,7 @@
 	MysqlService mysqlService = MysqlService.getInstance();
 	mysqlService.connect();
 	
-	String query = "SELECT used_goods.image, used_goods.title, used_goods.price, seller.nickname FROM `used_goods`"
-				+ "JOIN `seller` ON seller.id = used_goods.sellerId"
-				+ "ORDER BY seller.id DESC;";
+	String query = "SELECT used_goods.image, used_goods.title, used_goods.price, seller.nickname FROM `used_goods`JOIN `seller` ON seller.id = used_goods.sellerId ORDER BY seller.id DESC";
 				
 	List<Map<String, Object>> resultList = mysqlService.select(query);
 	
